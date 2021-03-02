@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import theme from "./assets/theme/theme";
+import withStyles from "@material-ui/core/styles/withStyles";
 
-function App() {
+import Home from "./pages/Home";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+function App({ classes }) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          test updates
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MuiThemeProvider theme={theme}>
+      <div className={classes.container}>
+        <Header />
+        <Home />
+        <Footer />
+      </div>
+    </MuiThemeProvider>
   );
 }
 
-export default App;
+const styles = ({ palette, breakpoints, spacing, typography }) => ({
+  container: {
+    margin: 0,
+    padding: "10px",
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    [breakpoints.up("sm")]: {
+      width: "70%",
+    },
+    [breakpoints.down("sm")]: {
+      width: "100%",
+    },
+    [breakpoints.up("md")]: {
+      width: "90%",
+      padding: "20px",
+    },
+    [breakpoints.up("lg")]: {
+      width: "80%",
+    },
+  },
+});
+
+export default withStyles(styles)(App);
