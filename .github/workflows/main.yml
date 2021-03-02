@@ -31,8 +31,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: simple-engineer-deployment-tutorial
-          environment_name: SimpleEngineerDeploymentTutorial-env
+          application_name: emperor-frontend
+          environment_name: emperor-frontend-env
           version_label: "the-simple-engineer-deployment-${{ steps.format-time.outputs.replaced }}"
           region: us-east-2
           deployment_package: deploy.zip
